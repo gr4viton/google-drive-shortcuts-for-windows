@@ -131,7 +131,7 @@ class C_shortcuter:
         q.lsNam = []
         q.ext = ''
         q.cat = ''      # category and subdir
-        q.print_it = 0
+        q.print_it = 5
         q.d = {}
         q.sum_sho = 0   # shortcut counter
 
@@ -142,7 +142,9 @@ class C_shortcuter:
     def PRINT_created(q):
         q.PRINT_createdWhich(q.sum_sho)
     def PRINT_createdAll(q):
-        q.PRINT_createdWhich(q.all_sho)
+        if q.print_it > 0:
+            print( '[%i] shortcuts created alltogether' 
+                % (q.sum_all) )
     def PRINT_createdWhich(q, num):
         if q.print_it > 0:
             print( '%i=[ %s ] category finished (shortcuts created)' 
