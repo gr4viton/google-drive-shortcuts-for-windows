@@ -4,7 +4,11 @@ import re
 
 shell = Dispatch('WScript.Shell')
 
-class C_shortcuter:
+
+def PP():
+    print('%'*80)
+
+class C_Shotor:
 
     all_sho = 0
 
@@ -56,7 +60,7 @@ class C_shortcuter:
 
     def CREATE_shortcut(q):
         if q.print_it > 10:
-            start_line = "___" * 12+"\nNEW SHORTCUT (%s so far):" % q.sum_sho
+            start_line = "_" * 42 +"\nNEW SHORTCUT (%s so far):" % q.sum_sho
             print("%s\n"                % start_line +
                   "shortcut_path:\t%s\n"% q.shortcut_path +
                   "target_path:\t%s\n"  % q.target_path +
@@ -109,7 +113,7 @@ class C_shortcuter:
         for pth in q.pthList:
             q.rootdir = os.path.abspath(pth)
             print( ' '.join([
-                '    [',q.cat ,
+                '\t[',q.cat ,
                 '] Started to search for [', q.retx, 
                 '] in dir [', q.rootdir, ']'
                 ]) )
@@ -147,15 +151,12 @@ class C_shortcuter:
                 % (q.sum_all) )
     def PRINT_createdWhich(q, num):
         if q.print_it > 0:
-            print( '%i=[ %s ] category finished (shortcuts created)' 
+            print( '%i\t[ %s ] category finished (shortcuts created)' 
                 % (num,q.cat) )
-
-
-
-
+            PP()
 
 def CREATE_fromConfigs(config_file, syntax):
-    lsShoter = []
+    lsShotor = []
     shopath = ''
     shoext = ''
     ignored = ''
@@ -176,7 +177,8 @@ def CREATE_fromConfigs(config_file, syntax):
         if not line:
             continue
         elif line[0] in commentag: # comment
-            print(line)
+            #print('printing comments:')
+            #print(line)
             continue
 
         elif line in syntax:
@@ -189,23 +191,22 @@ def CREATE_fromConfigs(config_file, syntax):
             elif status == 'ignored':
                 ignored = line
             elif status == 'new':
-                lsShoter.append( C_shortcuter() )
-                actShoter = lsShoter[-1]
-                actShoter.cat = line
-                actShoter.shopath = shopath
-                actShoter.shoext = shoext
-                actShoter.ignored = ignored
+                lsShotor.append( C_Shotor() )
+                actShotor = lsShotor[-1]
+                actShotor.cat = line
+                actShotor.shopath = shopath
+                actShotor.shoext = shoext
+                actShotor.ignored = ignored
             elif status == 'dir':
-                actShoter.pthList.append( line )
+                actShotor.pthList.append( line )
             elif status == 're':
-                actShoter.lsNam.append( line )
+                actShotor.lsNam.append( line )
             elif status == 'ext':
-                actShoter.ext = line
-                print(line)
+                actShotor.ext = line
             elif status == 'printit':
-                actShoter.print_it = int(line)
-                # actShoter.print_it = 100
-    return lsShoter
+                actShotor.print_it = int(line)
+                # actShotor.print_it = 100
+    return lsShotor
            
 def CREATE_syntax():
     synsign = '/'
@@ -222,29 +223,33 @@ def CREATE_syntax():
     syntax = [ synsign + syntag for syntag in syntags ]
     return syntax 
  
-def SHOTER_execute(lsShoter):
-    [shoter.RUN() for shoter in lsShoter]
-    lsShoter[0].PRINT_createdAll()
+def SHOTER_execute(lsShotor):
+    [shoter.RUN() for shoter in lsShotor]
+    lsShotor[0].PRINT_createdAll()
+
 
 if __name__ == "__main__":
     # init
+    PP()
+    print('> Gr4pyShoter started')
+    PP()
     print('[....] Creating syntax')
     syntax = CREATE_syntax()
     print('[DONE] Syntax created')
-    print('[....] Reading config and creating Shoter items, printing comments:')
-    lsShoter = CREATE_fromConfigs('conf/config.vim', syntax)
+    print('[....] Reading config and creating Shotor items')
+    lsShotor = CREATE_fromConfigs('conf/config.vim', syntax)
 
-    print('[DONE] %s Shoters loaded' % len(lsShoter) )
-    print('[....] Executing Shorters')
-    SHOTER_execute(lsShoter)
-    print('[DONE] Shoters executed')
+    print('[DONE] %s Shotors loaded' % len(lsShotor) )
+    print('[....] Executing Shorters')    
+    PP()
+    SHOTER_execute(lsShotor)
+    print('[DONE] Shotors executed')
+    PP()
     print('Program end')
+    PP()
 
 
 
-
-
-    
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #def enum(*sequential, **named):
 #    enums = dict(zip(sequential, range(len(sequential)/)), **named)
