@@ -22,6 +22,7 @@ ____________________________________________________
 ### x] winshell
  - installed by pip
   --> pip.exe install winshell
+
 ### x] win32com
  - installed by pip
   --> pip.exe install win32con
@@ -29,7 +30,7 @@ ____________________________________________________
   --> pip.exe install --allow-unverified pywin32 --allow-external allowed_modules name_of_module
  - or download here
   -- http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/pywin32-219.win-amd64-py3.4.exe/download
-_________>
+
 ## [.] win7
 
 ____________________________________________________
