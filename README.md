@@ -4,26 +4,27 @@ ____________________________________________________
 ____________________________________________________
  Gr4viton`s Shotor = [shortcut creator] written in Python fow windows (possibly others).
 ____________________________________________________
-# git 
+## git 
 https://github.com/gr4viton/gr4pyShotor
 ____________________________________________________
-# Licence
+## Licence
 
 [x] developed under the Creative commons licence:
 CC BY-NC-SA 
 https://creativecommons.org/licenses/by-nc-sa/4.0/
 ____________________________________________________
-# SW
+## SW
 
-## [x] Python 3.4.0 (v3.4.0:04f714765c13, Mar 16 2014, 19:25:23) [MSC v.1600 64 bit (AMD64)] on win32
+### [x] Python 3.4.0 
+(v3.4.0:04f714765c13, Mar 16 2014, 19:25:23) [MSC v.1600 64 bit (AMD64)] on win32
 
-## [x] Python addons:
+### [x] Python addons:
 
-### x] winshell
+#### x] winshell
  - installed by pip
   --> pip.exe install winshell
 
-### x] win32com
+#### x] win32com
  - installed by pip
   --> pip.exe install win32con
  - or
@@ -31,10 +32,10 @@ ____________________________________________________
  - or download here
   -- http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/pywin32-219.win-amd64-py3.4.exe/download
 
-## [.] win7
+### [.] win7
 
 ____________________________________________________
-# BREIF
+## BREIF
 
 I started to develope this [2014_11_21], as I wanted to get the shortcuts for google drive shared files without turning on the Windows indexing option.
 
